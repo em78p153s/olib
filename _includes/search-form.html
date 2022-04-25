@@ -1,0 +1,17 @@
+<div class="page page-search">
+  <input id="search-input" type="text" placeholder="Input key words here^_^"></input>
+  <h1>
+    <span>Search Result</span>
+    <img src="{{site.baseurl}}/assets/image/home/loading.svg">
+  </h1>
+  <ul class="list-search">
+    {%- for post in site.posts  %}
+    <li hidden>
+      <a href="{{site.baseurl}}{{ post.url }}">
+        <p class="title">{{ post.title }}</p>
+        <p class="content"></p>
+      </a>
+    </li>
+    {%- endfor %}
+  </ul>
+</div>

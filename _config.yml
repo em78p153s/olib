@@ -1,0 +1,143 @@
+# =======================================================================================================================
+# Site requirements
+# 1.单独页:首页、关于、联系、版权、友链、404、置顶、类型、标签、时间、搜索
+# 2.小工具:搜索、打赏、音乐、统计、特效
+# 3.布局页:侧栏、头部、尾部、主体、导航
+# =======================================================================================================================
+# site dir list
+# =======================================================================================================================
+# .
+# ├── .github
+# |   ├── workflows
+# |   |   ├── action.yml
+# ├── _collections
+# ├── _data
+# ├── _drafts
+# |   ├── 2022-01-31-olib-04.md
+# |   └── 2022-01-31-olib-05.md
+# ├── _includes
+# |   ├── footer.html
+# |   └── header.html
+# ├── _layouts
+# |   ├── category.html
+# |   └── default.html
+# |   ├── index.html
+# |   └── page.html
+# |   ├── post.html
+# |   └── search.html
+# |   ├── tags.html
+# ├── _plugins
+# ├── _posts
+# |   ├── 2022-01-31-olib-01.md
+# |   └── 2022-01-31-olib-02.md
+# |   └── 2022-01-31-olib-03.md
+# ├── _sass
+# |   ├── hydeout
+# |   └── hydeout.css
+# ├── assets
+# |   ├── css
+# |   └── images
+# |   └── css
+# |   └── images
+# |   └── js.html
+# |   └── svg.html
+# |   └── xml.html
+# ├── pages
+# |   ├── 404.md
+# |   └── about.md
+# |   └── category.md
+# |   └── contact.html
+# |   └── copyright.html
+# |   └── link.html
+# |   └── music.html
+# |   └── nRFx-Doc.html
+# |   └── nRFx-Guides.html
+# |   └── nRFx-QA.html
+# |   └── reward.html
+# |   └── script.html
+# |   └── search.html
+# |   └── stat.html
+# |   └── tags.html
+# |   └── tline.html
+# ├── _assets
+# ├── _config.yml
+# ├── .gitignore
+# └── .stylelintrc.json
+# └── CNAME
+# └── favicon.ico
+# ├── Gemfile
+# └── index.html
+# └── LICENSE.md
+# └── olib.gemspec
+# └── README.md
+
+
+# =======================================================================================================================
+# site default config
+# =======================================================================================================================
+# Dependencies
+language: zh-CN
+timezone: Asia/Shanghai
+
+# # 内容过滤
+# show_drafts: null
+# limit_posts: 0
+# future:      true
+# unpublished: false
+
+
+# 语法高亮
+markdown:         kramdown
+highlighter:      rouge
+
+kramdown:
+  auto_ids:       true
+  footnote_nr:    1
+  entity_output:  as_char
+  toc_levels:     1..6
+  smart_quotes:   lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
+
+# 代码空间
+  coderay:
+    coderay_wrap:              div
+    coderay_line_numbers:      inline
+    coderay_line_number_start: 1
+    coderay_tab_width:         4
+    coderay_bold_every:        10
+    coderay_css:               style
+
+# 文章置顶
+
+# 文章打赏
+user:
+  reward_comment: 坚持原创技术分享，您的支持将鼓励我继续创作！
+  wechatpay:      '/assets/images/home/wechatpay_cfg_1.jpg'
+  alipay:         '/assets/images/home/alipay_cfg_1.jpg'
+
+# Setup
+title:            OLIB
+tagline:          '元仓库'
+keywords:         OLIB,BLE,Nordic,nRF52,nRF53,nRF91,Zephyr,NCS
+description:      '<a href="/contact.html" target="_blank">QQ群：542294007</a>'
+
+author:
+  name:           'Peter.Min'
+  url:            https://www.olib.cn
+
+cloud_pan: 
+      url:        https://pan.olib.cn
+
+github:
+  repo:           https://github.com/em78p153s/olib
+  
+
+url:              https://www.olib.cn
+baseurl:          ''
+# permalink:        /blog/:title/
+paginate:         10
+
+plugins:
+  - jekyll-feed
+  - jekyll-gist
+  - jekyll-paginate

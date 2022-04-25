@@ -1,0 +1,13 @@
+<form action="https://devzone.nordicsemi.com/search" class="search-form" target="_blank" >
+  <div class="search-row">
+    <input id="search-bar" type="search" placeholder="Key words is English." name="q" />
+    {% comment %} Hacky strip of protocol to the sitesearch value we pass to Baidu
+    {% endcomment %}
+    {% assign url = site.url | replace_first: 'https://', '' %}
+    {% assign url = url | replace_first: 'http://', '' %}
+    {% assign url = url | replace_first: 'spdy://', '' %}
+    {% assign url = url | replace_first: '//', '' %}
+    <input name="sitesearch" type="hidden" value="{{ url }}{{ "/" | relative_url }}" />
+    <input type="submit" value="Search" />
+  </div>
+</form>

@@ -1,0 +1,68 @@
+name: pages-build-deployment-ali-oss
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the site in the jekyll/builder container
+      run: |
+        docker run \
+        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
+        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
+    - name: setup aliyun oss SZ
+      uses: manyuanrong/setup-ossutil@v2.0
+      with:
+          endpoint: ${{ secrets.OSS_ENDPOINT_SZ }}
+          access-key-id: ${{ secrets.OSS_ACCESSKEY_ID }}
+          access-key-secret: ${{ secrets.OSS_ACCESSKEY_SECRET }}
+          sts-token: ${{ secrets.OSS_STS_TOKEN }}
+    - name: cp files to aliyun
+      run: ossutil cp -rf _site ${{ secrets.OSS_BUCKET_OLIB_SZ }}
+    # - name: setup aliyun oss HK
+    #   uses: manyuanrong/setup-ossutil@v2.0
+    #   with:
+    #       endpoint: ${{ secrets.OSS_ENDPOINT_HK }}
+    #       access-key-id: ${{ secrets.OSS_ACCESSKEY_ID }}
+    #       access-key-secret: ${{ secrets.OSS_ACCESSKEY_SECRET }}
+    #       sts-token: ${{ secrets.OSS_STS_TOKEN }}
+    # - name: cp files to aliyun
+    #   run: ossutil cp -rf _site ${{ secrets.OSS_BUCKET_OLIB_HK }}
+
+
+# name: Build Jekyll site and Deploy to OSS
+# 从阿里云获取到以下数据：
+# endpoint：填写 Bucket 所在地域的域名信息，可参考访问域名和数据中心。
+# access-key-id：查看方式请参考创建 AccessKey。
+# access-key-secret：查看方式请参考创建 AccessKey。
+# sts-token：非必配项，若采用 STS 临时授权方式访问 OSS 需要配置该项，否则置空即可。stsToken 生成方式参考临时访问凭证。
+
+# 打开Github->存储库->Settings->Secrets->Actions
+# New repository secret->Actions secrets / New secret
+
+# 新建以下选项
+# 创建的Bucket所在地域的域名信息，可参考访问域名和数据中心，选择香港地区可以绑定域名测试可用性。
+# Name:OSS_ENDPOINT_HK
+# Value:oss-cn-hongkong.aliyuncs.com
+
+# 创建的Bucket的名称
+# Nmae:OSS_BUCKET_NAME
+# Value:oss://web-blog_001
+
+# 查看方式请参考创建 AccessKey。
+# Nmae:OSS_ACCESSKEY_ID
+# Value:L**********************T
+
+# 查看方式请参考创建 AccessKey。
+# Nmae:OSS_ACCESSKEY_SECRET
+# Value:s****************************W
+
+# STS 临时授权方式访问，默认留空:""
+# Nmae:OSS_STS_TOKEN
+# Value: #不用则填写一个空格，用则填对应值
