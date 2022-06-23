@@ -1,4 +1,3 @@
----
 layout: post
 title: nRF52-QA-移植配对绑定到ble_app_uart例程
 date: 2022-06-23
@@ -59,7 +58,9 @@ case BSP_EVENT_KEY_3:
 ```
 
 * 在函数 int main(void) 中增加代码
+
 ![16](/assets/images/post/nRF52-QA-cfg-16.png)
+
 ```cpp
     peer_manager_init();  //Peter add
 ```
@@ -70,7 +71,9 @@ case BSP_EVENT_KEY_3:
 ```
 
 * 在函数int main(void)上方插入以下代码
+
 ```cpp
+
 //Peter add pair and bond start
 #include "peer_manager.h"
 #include "peer_manager_handler.h"
@@ -256,6 +259,7 @@ void num_comp_reply(bool accept)
 ```
 
 * 使能配对绑定宏定义
+* 
 ```cpp
 // <e> PEER_MANAGER_ENABLED - peer_manager - Peer Manager
 //==========================================================
@@ -348,12 +352,12 @@ void num_comp_reply(bool accept)
 #endif
 
 // </e>
-
 ```
 
 ### 三、增加文件到工程
 * 增加文件夹nRF_BOND，添加以下文件到工程
 ![15](/assets/images/post/nRF52-QA-cfg-15.png)
+
 ```cpp
 .\..\..\..\..\..\..\components\ble\peer_manager\gatt_cache_manager.c
 .\..\..\..\..\..\..\components\ble\peer_manager\gatts_cache_manager.c
