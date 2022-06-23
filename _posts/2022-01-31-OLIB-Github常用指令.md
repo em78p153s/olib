@@ -71,12 +71,14 @@ last_modified_at: 2022-01-31T12:57:42-05:00
     git checkout -b "new branch"                            # 新建并切换到新分支
     git checkout -b "new branch" origin/"new branch"        # 新建分支并和远程分支进行关联
     git merge "your branch"                                 # 合并分支到当前所处分支上
+    git rebase "your branch"                                # 将xxx分支内容合并到当前分支，并不产生记录
     git branch -d "your branch"                             # 删除分支
     git branch -D "your branch"                             # 强制删除未 commit 的分支
 ```
 #### 四：Github 正常工作流程
 ```cpp
     git log                                                 # 查看历史提交记录
+    git log -p                                              # 查看历史提交记录，并比较差异
     git status                                              # 查看工作区状态
 
     git add *                                               # 添加文件
@@ -93,12 +95,14 @@ last_modified_at: 2022-01-31T12:57:42-05:00
 ```cpp
     git diff "xxx.txt"                                      # 工作区和暂存区之间差异对比
     git diff --cached(--staged) "xxx.txt"                   # 暂存区和版本库之间差异对比
-    git diff master                                         # 工作区和版本库之间差异对比
+    git diff main                                           # 工作区和版本库之间差异对比
 ```
 #### 六：版本回退
 ```cpp
+    git show                                                # 提交记录修改查看
     git reset --hard HEAD^                                  # HEAD 是最新版本，HEAD^ 是上一个版本
     git reset –hard cb926e7e                                # 回退到指定id，git log 查看版本id，版本id不用全部输入，取头几位就可以
+    git reset --soft 版本号                                  # 不丢弃基于此版本之后的修改
 ```
 
 #### 七：存储工作现场
@@ -112,6 +116,7 @@ last_modified_at: 2022-01-31T12:57:42-05:00
     git stash apply                                         # 恢复但不删除储藏栈的工作现场
     git stash pop                                           # 恢复并删除储藏栈中的工作现场
 ```
+
 #### 八：多人协作工作模式
 <p>
     试图用git push origin branch-name推送自己的修改<br>
@@ -148,9 +153,9 @@ last_modified_at: 2022-01-31T12:57:42-05:00
 
 3. 比较分支差异<br>
 ```cpp
-    git log master..origin/master                           # 比较本地 master 分支和 origin/master 分支有什么区别
-    git checkout master                                     # 切换到本地 master 分支下
-    git merge origin master                                 # 合并 origin/master 分支到本地 master 分支
+    git log master..origin/main                           # 比较本地 main 分支和 origin/main 分支有什么区别
+    git checkout main                                     # 切换到本地 main 分支下
+    git merge origin main                                 # 合并 origin/main 分支到本地 main 分支
 ```
 4. 删除未跟踪文件<br>
 ```cpp
@@ -183,3 +188,21 @@ last_modified_at: 2022-01-31T12:57:42-05:00
 
 #### 十：参考资料
 [Github配置文档](https://git-scm.com/book/en/v2)
+
+#### 十一：git常用指令
+
+
+暂存状态回退到修改状态
+git restore --staged <>
+
+生成patch
+git format-patch -s -1 xxx
+
+启用patch
+git am
+git app
+
+跟踪远程分支，并在本地创建对应分支
+git checkout --track origin/test
+
+
