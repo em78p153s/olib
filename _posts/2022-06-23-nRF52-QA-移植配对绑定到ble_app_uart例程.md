@@ -260,7 +260,6 @@ void num_comp_reply(bool accept)
 ```
 
 * 使能配对绑定宏定义
-* 
 ```cpp
 // <e> PEER_MANAGER_ENABLED - peer_manager - Peer Manager
 //==========================================================
