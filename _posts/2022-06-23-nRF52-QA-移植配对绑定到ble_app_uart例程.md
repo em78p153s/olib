@@ -1,3 +1,4 @@
+---
 layout: post
 title: nRF52-QA-移植配对绑定到ble_app_uart例程
 date: 2022-06-23
@@ -6,7 +7,7 @@ tags:
 - peer 
 - BOND
 - BLE_APP_UART
-last_modified_at: 2022-06-23T12:57:42-05:00
+last_modified_at: 2022-04-25T12:57:42-05:00
 # excerpt_separator:  <!--more-->
 ---
 
