@@ -16,7 +16,7 @@ sidebar_link: true
 * 功耗：[https://devzone.nordicsemi.com/nordic/power](https://devzone.nordicsemi.com/nordic/power)
 * 云端：[https://nrfcloud.com](https://nrfcloud.com)
 * nRF Connect 文档[https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/index.html](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/index.html)
-
+* 中文官网：[https://www.nordicsemi.cn](https://www.nordicsemi.cn)
 
 
 ### 大牛博客
