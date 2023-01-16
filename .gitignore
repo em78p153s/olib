@@ -47,3 +47,8 @@ Gemfile.lock
 _config.dev.yml
 .vscode
 *.gem
+
+# Peter
+build.bat
+Home.url
+.vscode
