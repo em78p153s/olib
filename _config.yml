@@ -88,25 +88,14 @@ timezone: Asia/Shanghai
 
 
 # 语法高亮
-markdown:         kramdown
-highlighter:      rouge
+markdown: kramdown
+mathjax: true
+highlighter: rouge
+compress_html:
+  clippings: all
+  comments: all
+  startings: [html, head, body]
 
-kramdown:
-  auto_ids:       true
-  footnote_nr:    1
-  entity_output:  as_char
-  toc_levels:     1..6
-  smart_quotes:   lsquo,rsquo,ldquo,rdquo
-  enable_coderay: false
-
-# 代码空间
-  coderay:
-    coderay_wrap:              div
-    coderay_line_numbers:      inline
-    coderay_line_number_start: 1
-    coderay_tab_width:         4
-    coderay_bold_every:        10
-    coderay_css:               style
 
 # 文章置顶
 
